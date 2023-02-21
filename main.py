@@ -65,7 +65,7 @@ def decoder(input_dimension, output_dimension):
 
 
 
-def AttentionModule(out_dimension, input_dimension=128):
+def InductionModule(out_dimension, input_dimension=128):
     """
     the input of this module is the concatenated features h from{h1,h2...hn}
     and the output is a V dimensional weight vector w
