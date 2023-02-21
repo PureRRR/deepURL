@@ -25,7 +25,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 def encoder(input_dimension, output_dimension):
     model = keras.Sequential()
-    model.add(layers.Dense(128, input_shape=(input_dimension,)))
+    model.add(layers.Dense(512, input_shape=(input_dimension,)))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU())
 
@@ -54,7 +54,7 @@ def decoder(input_dimension, output_dimension):
     # model.add(layers.BatchNormalization())
     # model.add(layers.LeakyReLU())
 
-    model.add(layers.Dense(128))
+    model.add(layers.Dense(512))
     model.add(layers.BatchNormalization())
     model.add(layers.LeakyReLU())
 
@@ -84,7 +84,6 @@ def AttentionModule(out_dimension, input_dimension=128):
     model.add(layers.BatchNormalization())
 
     model.add(Activation('sigmoid'))
-    # 没有用τ
     model.add(layers.Softmax())
 
     return model
@@ -292,7 +291,6 @@ def train(dataset, epochs):
     global now_highest
     for epoch in range(epochs):
 
-        # 创建一个进度条
         with tqdm(total=len(dataset), desc=f'Epoch {epoch + 1}/{epochs}', unit='it', colour='white') as pbar:
             for dataset_batch in dataset:
                 whole_loss, autoencoder_loss, cmi_loss, cluster_result = train_step(dataset_batch)
