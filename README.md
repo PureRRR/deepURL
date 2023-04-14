@@ -1,5 +1,5 @@
-# deepULR
-This is a Tensorflow implementation of deepULR. Please cite the paper in your publications if you find the source code useful to your research.
+# deepURL
+This is a Tensorflow implementation of deepURL. 
 
 # Installation
 Install Python3.6, Tensorflow2, numpy, munkres.
